@@ -1,0 +1,111 @@
+﻿
+@page "/products"
+@using System.Net.Http.Json
+@using System.Text.Json.Serialization
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="products-page">
+
+    <div class="products-heading">
+        <div>
+            <div class="products-eyebrow">TU ESPACIO FAVORITO</div>
+            <h2 class="products-title">Nuestro catálogo 🌸</h2>
+            <p class="products-subtitle">
+                Encuentra ese producto especial para ti.
+            </p>
+        </div>
+
+        @if (productos != null)
+        {
+            <span class="products-count">
+                @productos.Count productos
+            </span>
+        }
+    </div>
+
+    @if (productos == null)
+    {
+        <div class="products-message">
+            <p>Cargando productos... 🩵</p>
+        </div>
+    }
+    else if (productos.Count == 0)
+    {
+        <div class="products-message">
+            <p>No se encontraron productos.</p>
+        </div>
+    }
+    else
+    {
+        <div class="products-grid">
+            @foreach (var producto in productos)
+            {
+                <div class="product-card">
+
+                    <div class="product-image-container">
+                        <img class="product-image"
+                             src="@producto.Image"
+                             alt="@producto.Title" />
+                    </div>
+
+                    <div class="product-info">
+                        <span class="product-category">
+                            @producto.Category
+                        </span>
+
+                        <h3 class="product-name">
+                            @producto.Title
+                        </h3>
+
+                        <p class="product-price">
+                            $@producto.Price.ToString("N2")
+                        </p>
+
+                        <div class="product-actions">
+                            <a class="product-button"
+                               href="/products/@producto.Id">
+                                Ver detalle
+                                <span aria-hidden="true"> →</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    private List<ProductDto>? productos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var http = HttpClientFactory.CreateClient("FakeStore");
+
+        productos = await http.GetFromJsonAsync<List<ProductDto>>(
+            "api/Products");
+    }
+
+    public class ProductDto
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("title")]
+        public string Title { get; set; } = string.Empty;
+
+        [JsonPropertyName("price")]
+        public decimal Price { get; set; }
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; } = string.Empty;
+
+        [JsonPropertyName("category")]
+        public string Category { get; set; } = string.Empty;
+
+        [JsonPropertyName("image")]
+        public string Image { get; set; } = string.Empty;
+    }
+}

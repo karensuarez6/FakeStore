@@ -1,0 +1,151 @@
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #F6E6C9;
+}
+
+main {
+    flex: 1;
+    min-width: 0;
+    background: #F6E6C9;
+}
+
+.sidebar {
+    background: #E69A9B;
+    color: #574E65;
+}
+
+.main-content {
+    min-width: 0;
+    background: #F6E6C9;
+}
+
+.top-bar {
+    min-height: 105px;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: #FFFCF5;
+    border-bottom: 2px solid #E8D4BE;
+}
+
+.welcome-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #E58A55;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.welcome-text h1 {
+    margin: 0;
+    color: #756B92;
+    font-size: clamp(1.1rem, 2vw, 1.65rem);
+    font-weight: 700;
+}
+
+.top-bar-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.top-action {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #72C9BE;
+    color: #354F50;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+    .top-action:hover {
+        background: #A5DFD7;
+        color: #354F50;
+    }
+
+.content {
+    padding: 2rem 2.5rem;
+    min-height: calc(100vh - 105px);
+    background: #F6E6C9;
+}
+
+#blazor-error-ui {
+    color: #574E65;
+    background: #F8DAD8;
+    border-top: 1px solid #E69A9B;
+    bottom: 0;
+    box-shadow: 0 -2px 8px #756B921A;
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.8rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .reload {
+        color: #756B92;
+        margin-left: 0.5rem;
+    }
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+        border: none;
+        background: transparent;
+        color: #574E65;
+        font-size: 1.25rem;
+    }
+
+@media (min-width: 641px) {
+    .page {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 270px;
+        min-width: 270px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+    }
+
+    main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640.98px) {
+    .top-bar {
+        min-height: 90px;
+        padding: 1rem;
+    }
+
+    .welcome-text h1 {
+        max-width: 230px;
+        font-size: 1.1rem;
+    }
+
+    .content {
+        padding: 1.25rem 1rem;
+    }
+}

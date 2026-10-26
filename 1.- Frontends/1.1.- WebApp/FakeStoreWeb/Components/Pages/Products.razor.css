@@ -1,0 +1,212 @@
+
+/* Catálogo retro psicodélico suave */
+
+.products-page {
+    color: #574E65;
+    padding: 1.5rem;
+}
+
+.products-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.products-eyebrow {
+    color: #E58A55;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
+}
+
+.products-title {
+    color: #756B92;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+}
+
+.products-subtitle {
+    color: #796D79;
+    margin: 0;
+}
+
+.products-count {
+    background: #72C9BE;
+    color: #354F50;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Distribución de los productos en columnas */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+    /* Tarjetas */
+
+    .products-grid .product-card {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: #FFFCF5;
+        border: 1px solid #E8D4BE;
+        border-radius: 18px;
+        box-shadow: 0 5px 16px #756B9212;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .products-grid .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 24px #756B9226;
+        }
+
+/* Espacio reservado para las imágenes */
+
+.product-image-container {
+    height: 220px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F6E6C9;
+    overflow: hidden;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Información del producto */
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    padding: 1.2rem;
+    gap: 0.8rem;
+}
+
+.product-category {
+    display: inline-block;
+    background: #F8DAD8;
+    color: #756B92;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.product-name {
+    color: #756B92;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 700;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.product-price {
+    color: #E58A55;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: auto 0 0;
+    padding-top: 0.3rem;
+}
+
+/* Botones */
+
+.product-actions {
+    width: 100%;
+    margin-top: 0.4rem;
+}
+
+.product-button,
+.product-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 800;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.product-button {
+    background: #72C9BE;
+    color: #354F50;
+}
+
+    .product-button:hover {
+        background: #A5DFD7;
+        color: #354F50;
+        transform: translateY(-1px);
+    }
+
+.product-button-secondary {
+    background: #E69A9B;
+    color: #574E65;
+}
+
+    .product-button-secondary:hover {
+        background: #F0B6B5;
+        color: #574E65;
+    }
+
+/* Mensajes de carga y catálogo vacío */
+
+.products-message {
+    padding: 2rem;
+    background: #FFFCF5;
+    color: #574E65;
+    border: 1px solid #E8D4BE;
+    border-radius: 16px;
+    text-align: center;
+}
+
+/* Ajustes para pantallas pequeñas */
+
+@media (max-width: 600px) {
+    .products-page {
+        padding: 1rem;
+    }
+
+    .products-title {
+        font-size: 1.6rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+
+    .product-image-container {
+        height: 180px;
+        padding: 0.8rem;
+    }
+
+    .product-info {
+        padding: 0.9rem;
+    }
+}

@@ -1,0 +1,188 @@
+
+.sidebar-brand {
+    min-height: 100px;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    background: #E69A9B;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #574E65;
+    text-decoration: none;
+    font-size: 1.55rem;
+    font-weight: 750;
+}
+
+    .brand-link:hover {
+        color: #574E65;
+    }
+
+.brand-icon,
+.brand-accent {
+    color: #756B92;
+}
+
+.brand-icon {
+    font-size: 1.9rem;
+}
+
+.sidebar-menu {
+    padding: 1rem 0.85rem;
+    background: #E69A9B;
+}
+
+.nav-section-title {
+    color: #756B92;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    padding: 1.2rem 0.7rem 0.65rem;
+}
+
+.nav-item {
+    font-size: 0.95rem;
+    padding-bottom: 0.4rem;
+}
+
+    .nav-item .nav-link {
+        color: #574E65;
+        border-radius: 12px;
+        min-height: 3.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+        .nav-item .nav-link span.bi {
+            font-size: 1.15rem;
+            width: 1.4rem;
+            text-align: center;
+        }
+
+        .nav-item .nav-link.active {
+            background: #72C9BE;
+            color: #354F50;
+            font-weight: 700;
+            box-shadow: 0 3px 10px #756B9220;
+        }
+
+        .nav-item .nav-link:hover {
+            background: #F6E6C9;
+            color: #574E65;
+        }
+
+.sidebar-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: auto 0.85rem 1rem;
+    padding: 1rem;
+    border: 1px solid #F6E6C9;
+    border-radius: 12px;
+    background: #F6E6C9;
+    color: #574E65;
+}
+
+    .sidebar-footer > span {
+        color: #E58A55;
+        font-size: 1.35rem;
+    }
+
+    .sidebar-footer div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .sidebar-footer strong {
+        font-size: 0.85rem;
+    }
+
+    .sidebar-footer small {
+        color: #756B92;
+        font-size: 0.75rem;
+    }
+
+.navbar-toggler {
+    appearance: none;
+    cursor: pointer;
+    width: 3.5rem;
+    height: 2.5rem;
+    color: #574E65;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    border: 1px solid #D9B6B2;
+    border-radius: 8px;
+    background-color: #FFFCF5;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23756B92' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.75rem;
+}
+
+    .navbar-toggler:checked {
+        background-color: #72C9BE;
+    }
+
+.top-row {
+    min-height: 3.5rem;
+    background-color: #FFFCF5;
+}
+
+.nav-scrollable {
+    display: none;
+}
+
+.navbar-toggler:checked ~ .nav-scrollable {
+    display: block;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .nav-scrollable {
+        display: block;
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}
+
+
+/* Menú lateral: paleta retro psicodélica */
+
+.sidebar-menu .nav-item > a.nav-link,
+.sidebar-menu .nav-item > a.nav-link:link,
+.sidebar-menu .nav-item > a.nav-link:visited,
+.sidebar-menu .nav-item > a.nav-link.active,
+.sidebar-menu .nav-item > a.nav-link.active:visited {
+    color: #574E65 !important;
+    text-decoration: none !important;
+    border-radius: 12px;
+}
+
+    .sidebar-menu .nav-item > a.nav-link:hover {
+        color: #574E65 !important;
+        background-color: #F6E6C9 !important;
+        text-decoration: none !important;
+    }
+
+    .sidebar-menu .nav-item > a.nav-link.active {
+        color: #354F50 !important;
+        background-color: #72C9BE !important;
+        font-weight: 700;
+    }
+
+    .sidebar-menu .nav-item > a.nav-link:focus-visible {
+        outline: 2px solid #756B92;
+        outline-offset: 2px;
+    }

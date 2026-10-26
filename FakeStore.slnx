@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/1.- Frontends/" />
+  <Folder Name="/1.- Frontends/1.1.- WebApp/">
+    <Project Path="1.- Frontends/1.1.- WebApp/FakeStoreWeb/FakeStoreWeb.csproj" Id="6a759240-ded7-44a2-951d-c47408887849" />
+  </Folder>
+  <Folder Name="/2.- Backends/" />
+  <Folder Name="/2.- Backends/2.1.- Microservices/">
+    <Project Path="2.- Backends/2.1.- Microservices/FakeStore.Api/FakeStore.Api.csproj" Id="df31f626-c8dc-4f51-aff1-68084a6fc03a" />
+  </Folder>
+  <Folder Name="/2.- Backends/2.2.- Logic/">
+    <Project Path="2.- Backends/2.2.- Logic/FakeStore.Services/FakeStore.Services.csproj" Id="4f87d98a-1235-49e2-b1a3-549d6093e1bb" />
+  </Folder>
+  <Folder Name="/2.- Backends/2.3.- Infrastructure/">
+    <Project Path="2.- Backends/2.3.- Infrastructure/DTOs/DTOs/DTOs.csproj" Id="5e2d59e3-7d72-4438-acb4-fd640ab957de" />
+    <Project Path="2.- Backends/2.3.- Infrastructure/Entities/Entities/Entities.csproj" Id="ee776244-ce54-4c89-a82c-550e640d66a7" />
+  </Folder>
+  <Folder Name="/2.- Backends/2.4.- Domain/">
+    <Project Path="2.- Backends/2.4.- Domain/FakeStore.Domain/FakeStore.Domain.csproj" Id="ed18258b-fbf5-4257-a1fc-a5cca4ca45ce" />
+  </Folder>
+</Solution>

@@ -1,0 +1,37 @@
+﻿
+@inherits LayoutComponentBase
+
+<div class="page">
+    <aside class="sidebar">
+        <NavMenu />
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="welcome-text">
+                <span class="welcome-label">TIENDA ONLINE</span>
+                <h1>Encuentra algo que te encante</h1>
+            </div>
+
+            <div class="top-bar-actions">
+                <a href="/products" class="top-action" title="Ver productos">
+                    <span class="bi bi-search"></span>
+                </a>
+
+                <a href="/login" class="top-action" title="Mi cuenta">
+                    <span class="bi bi-person-circle"></span>
+                </a>
+            </div>
+        </header>
+
+        <article class="content">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    Ocurrió un error en la aplicación.
+    <a href="." class="reload">Recargar</a>
+    <button type="button" class="dismiss" aria-label="Cerrar">×</button>
+</div>
