@@ -1,5 +1,6 @@
 ﻿
 using FakeStore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FakeStore.Api.Controllers
@@ -41,9 +42,9 @@ namespace FakeStore.Api.Controllers
 
                 return Ok(new { mensaje = resultado });
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                return Unauthorized(new { mensaje = ex.Message });
             }
         }
 
@@ -59,7 +60,7 @@ namespace FakeStore.Api.Controllers
 
                 return Ok(new { token });
             }
-            catch (Exception ex)
+            catch (UnauthorizedAccessException ex)
             {
                 return Unauthorized(new { mensaje = ex.Message });
             }

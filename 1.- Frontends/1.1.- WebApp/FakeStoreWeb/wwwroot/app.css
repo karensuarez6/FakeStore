@@ -122,3 +122,151 @@ h6 {
 .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+/* Inicio de sesión y registro: estilo retro de FakeStore */
+.login-page {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background-color: var(--retro-crema);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    background-color: var(--retro-blanco);
+    border: 1px solid var(--retro-borde);
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(87, 78, 101, 0.10);
+}
+
+.login-brand {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--retro-violeta);
+}
+
+    .login-brand span {
+        color: var(--retro-terracota);
+    }
+
+.login-label {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--retro-violeta);
+    letter-spacing: 1px;
+}
+
+.login-card h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: var(--retro-texto);
+}
+
+.login-description {
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--retro-texto);
+}
+
+.login-field {
+    margin-bottom: 18px;
+}
+
+    .login-field label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--retro-texto);
+    }
+
+.login-input {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--retro-borde);
+    border-radius: 10px;
+    background-color: var(--retro-blanco);
+    color: var(--retro-texto);
+    font-size: 14px;
+}
+
+    .login-input:focus {
+        outline: none;
+        border-color: var(--retro-agua);
+        box-shadow: 0 0 0 3px rgba(114, 201, 190, 0.25);
+    }
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--retro-agua);
+    border-radius: 10px;
+    background-color: var(--retro-agua);
+    color: #394D4B;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+    .login-button:hover {
+        background-color: #98DDD4;
+        border-color: #98DDD4;
+    }
+
+    .login-button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+.login-error {
+    margin-bottom: 16px;
+    color: #B84F55;
+    font-size: 14px;
+}
+
+.login-card a {
+    color: var(--retro-violeta);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .login-card a:hover {
+        color: var(--retro-terracota);
+        text-decoration: underline;
+    }
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 24px 20px;
+    }
+}
+
+
+.logout-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--retro-borde);
+    border-radius: 12px;
+    background-color: var(--retro-crema);
+    color: var(--retro-texto);
+    text-align: left;
+    cursor: pointer;
+}
+
+    .logout-link:hover {
+        background-color: var(--retro-borde);
+        color: var(--retro-texto);
+    }

@@ -13,8 +13,9 @@ main {
 }
 
 .sidebar {
-    background: #E69A9B;
+    background: #FFFCF5;
     color: #574E65;
+    border-right: 1px solid #E8D4BE;
 }
 
 .main-content {

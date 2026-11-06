@@ -34,7 +34,7 @@ namespace FakeStore.Services
                 u.Correo == correo);
 
             if (existe)
-                throw new Exception("El usuario o correo ya existe.");
+                throw new InvalidOperationException("El usuario o correo ya existe."); // se cambia la excepción a InvalidOperationException para indicar que la operación no es válida debido a que el usuario o correo ya existe
 
             string hash = HashPassword(contrasena);
 
@@ -63,7 +63,7 @@ namespace FakeStore.Services
             if (usuario == null ||
                 usuario.PasswordHash != HashPassword(contrasena))
             {
-                throw new Exception("Usuario o contraseña incorrectos.");
+                throw new UnauthorizedAccessException("Usuario o contraseña incorrectos."); // se cambia la excepción a UnauthorizedAccessException para indicar que el acceso no está autorizado debido a credenciales incorrectas
             }
 
             string clave = _configuration["KeyJWT"]
@@ -78,12 +78,14 @@ namespace FakeStore.Services
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString(System.Globalization.CultureInfo.InvariantCulture)), //indicando que la conversión del identificador del usuario a texto no dependa del idioma o configuración regional del computador
                 new Claim(ClaimTypes.Name, usuario.NombreUsuario),
                 new Claim(ClaimTypes.Email, usuario.Correo)
             };
 
-            var token = new JwtSecurityToken(
+            var token = new JwtSecurityToken( // se cambia la creación del token a un objeto JwtSecurityToken para simplificar el código y mejorar la legibilidad, generado por FakeStore.Api y que está destinado a FakeStore.Web
+                issuer: "FakeStore.Api",
+                audience: "FakeStore.Web",
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: credenciales);
@@ -91,13 +93,10 @@ namespace FakeStore.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+
         private static string HashPassword(string contrasena)
         {
-            using var sha256 = SHA256.Create();
-
-            byte[] hash = sha256.ComputeHash(
-                Encoding.UTF8.GetBytes(contrasena));
-
+            byte[] hash = SHA256.HashData(Encoding.UTF8.GetBytes(contrasena)); // se cambia creación del objeto SHA256 a un método estático para simplificar el código create a hash 
             return Convert.ToBase64String(hash);
         }
     }

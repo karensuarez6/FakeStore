@@ -1,13 +1,20 @@
 using FakeStoreWeb.Components;
+using FakeStoreWeb.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
-builder.Services.AddHttpClient("FakeStore", client =>
+builder.Services.AddScoped<SesionUsuario>();
+
+builder.Services.AddHttpClient("FakeStore", client => // Configuración del cliente HTTP para la API de FakeStore, La dirección de la API ya no queda escrita directamente en el código. Ahora se obtiene desde appsettings.json
 {
-    client.BaseAddress = new Uri("https://localhost:7029/");
+    var baseUrl = builder.Configuration["ApiSettings:BaseUrl"]
+        ?? throw new InvalidOperationException(
+            "Falta configurar ApiSettings:BaseUrl.");
+
+    client.BaseAddress = new Uri(baseUrl);
 });
 
 var app = builder.Build();

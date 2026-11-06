@@ -1,4 +1,7 @@
-﻿
+﻿@using FakeStoreWeb.Services
+@inject SesionUsuario Sesion
+@inject NavigationManager Navigation
+
 <div class="sidebar-brand">
     <a class="brand-link" href="">
         <span class="bi bi-bag-heart-fill brand-icon"></span>
@@ -12,14 +15,15 @@
         <div class="nav-section-title">MENÚ PRINCIPAL</div>
 
         <div class="nav-item">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink class="nav-link menu-link" href="login"
+                     Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill" aria-hidden="true"></span>
                 <span>Inicio</span>
             </NavLink>
         </div>
 
         <div class="nav-item">
-            <NavLink class="nav-link" href="products">
+            <NavLink class="nav-link menu-link" href="products">
                 <span class="bi bi-grid-fill" aria-hidden="true"></span>
                 <span>Productos</span>
             </NavLink>
@@ -28,10 +32,19 @@
         <div class="nav-section-title">MI CUENTA</div>
 
         <div class="nav-item">
-            <NavLink class="nav-link" href="login">
+            <NavLink class="nav-link menu-link" href="login">
                 <span class="bi bi-person-circle" aria-hidden="true"></span>
                 <span>Iniciar sesión</span>
             </NavLink>
+        </div>
+
+        <div class="nav-item">
+            <button type="button"
+                    class="nav-link menu-link logout-link"
+                    @onclick="CerrarSesion">
+                <span class="bi bi-box-arrow-right" aria-hidden="true"></span>
+                <span>Cerrar sesión</span>
+            </button>
         </div>
 
     </nav>
@@ -44,3 +57,11 @@
         <small>Descubre algo especial</small>
     </div>
 </div>
+
+@code {
+    private void CerrarSesion()
+    {
+        Sesion.CerrarSesion();
+        Navigation.NavigateTo("/login", replace: true);
+    }
+}

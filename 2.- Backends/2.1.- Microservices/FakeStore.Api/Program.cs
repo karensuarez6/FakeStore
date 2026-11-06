@@ -38,8 +38,12 @@ builder.Services
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = false,
-            ValidateAudience = false,
+            ValidateIssuer = true, // se valida que el emisor del token sea el esperado
+            ValidIssuer = "FakeStore.Api",
+
+            ValidateAudience = true, // se valida que el destinatario del token sea el esperado
+            ValidAudience = "FakeStore.Web",
+
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(

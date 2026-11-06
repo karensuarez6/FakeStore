@@ -1,0 +1,137 @@
+﻿
+@page "/registro"
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Forms
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Navigation
+
+<PageTitle>Registro | FakeStore</PageTitle>
+
+<div class="login-page">
+    <div class="login-card">
+        <div class="login-brand">
+            Fake<span>Store</span>
+        </div>
+
+        <p class="login-label">CREA TU CUENTA</p>
+        <h1>¡Únete a FakeStore!</h1>
+        <p class="login-description">
+            Regístrate para descubrir nuestros productos.
+        </p>
+
+        <EditForm Model="@formulario" OnSubmit="@Registrar">
+            <div class="login-field">
+                <label for="usuario">Nombre de usuario</label>
+                <InputText id="usuario"
+                           class="login-input"
+                           @bind-Value="formulario.NombreUsuario"
+                           placeholder="Elige tu usuario" />
+            </div>
+
+            <div class="login-field">
+                <label for="correo">Correo electrónico</label>
+                <InputText id="correo"
+                           type="email"
+                           class="login-input"
+                           @bind-Value="formulario.Correo"
+                           placeholder="nombre@correo.com" />
+            </div>
+
+            <div class="login-field">
+                <label for="contrasena">Contraseña</label>
+                <InputText id="contrasena"
+                           type="password"
+                           class="login-input"
+                           @bind-Value="formulario.Contrasena"
+                           placeholder="Crea una contraseña" />
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(mensaje))
+            {
+                <p class="login-error">@mensaje</p>
+            }
+
+            <button type="submit"
+                    class="login-button"
+                    disabled="@cargando">
+                @(cargando ? "Registrando..." : "Crear cuenta")
+            </button>
+        </EditForm>
+
+        <p class="login-description">
+            ¿Ya tienes una cuenta?
+            <a href="/login">Inicia sesión</a>
+        </p>
+    </div>
+</div>
+
+@code {
+    private RegistroFormulario formulario = new();
+    private string mensaje = string.Empty;
+    private bool cargando;
+
+    private async Task Registrar()
+    {
+        mensaje = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(formulario.NombreUsuario) ||
+            string.IsNullOrWhiteSpace(formulario.Correo) ||
+            string.IsNullOrWhiteSpace(formulario.Contrasena))
+        {
+            mensaje = "Completa todos los campos.";
+            return;
+        }
+
+        cargando = true;
+
+        try
+        {
+            var cliente = HttpClientFactory.CreateClient("FakeStore");
+
+            var respuesta = await cliente.PostAsJsonAsync(
+                "api/Auth/registro",
+                new
+                {
+                    nombreUsuario = formulario.NombreUsuario.Trim(),
+                    correo = formulario.Correo.Trim(),
+                    contrasena = formulario.Contrasena
+                });
+
+            if (respuesta.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/login");
+                return;
+            }
+
+            var error = await respuesta.Content
+                .ReadFromJsonAsync<RespuestaRegistro>();
+
+            mensaje = error?.Mensaje ??
+                      "No se pudo completar el registro.";
+        }
+        catch (HttpRequestException)
+        {
+            mensaje = "No se pudo conectar con la API.";
+        }
+        catch (Exception)
+        {
+            mensaje = "Ocurrió un error al registrar la cuenta.";
+        }
+        finally
+        {
+            cargando = false;
+        }
+    }
+
+    private class RegistroFormulario
+    {
+        public string NombreUsuario { get; set; } = string.Empty;
+        public string Correo { get; set; } = string.Empty;
+        public string Contrasena { get; set; } = string.Empty;
+    }
+
+    private class RespuestaRegistro
+    {
+        public string? Mensaje { get; set; }
+    }
+}
